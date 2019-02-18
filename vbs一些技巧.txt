@@ -1,0 +1,121 @@
+***************************关闭所有vbs窗口********************
+taskkill /f /im wscript.exe 
+taskkill /f /im wmiprvse.exe
+
+*********1vbs 随机生成1到10的随机数******************************************************************
+-------1--------------------------------
+randomize
+a = round(rnd * 100 + 1)
+msgbox a
+-------2-----------------------------
+randomize'随机函数
+a = int(rnd * 9 + 1)
+msgbox a
+***************************2vbs大开网页***************************
+a=msgbox("来我空间看看吧?",vbOKCancel)
+
+if a=vbok then
+
+Set Sh = WScript.CreateObject("WScript.Shell")
+
+Sh.Run "https://user.qzone.qq.com/1335476765", 3 
+end if
+****************vbs打开记事本自动写入保存****************************************************
+dim sh,str,a,i
+set sh=createobject("wscript.shell")
+sh.run "notepad"                          '打开记事本
+do while sh.appactivate("无标题 - 记事本")=false
+wscript.sleep 200
+loop
+str="nihao!"  '这一行是演示中文输入。定义要打字的字符串。只能是英文或数字或符号。
+'如果想输入中文请把下2行的注释去掉。否则就在前面加上注释符号“'”(不带引号)
+'并在str中输入按键的过程如：想输入“气死我了”就写 qisiwole1
+sh.sendkeys "^ "              
+'解释上一行：呼唤中文输入法
+for i=0 to len(str)-1
+a=mid(str,i+1,1)
+sh.sendkeys a                 '发送虚拟按键
+wscript.sleep 100         '打字速度。数值越小越快。
+next
+save=1       '如想保存则写1
+if save=1 then
+'sh.sendkeys "^ "
+'解释上一行：关闭中文输入法。如果是中文，则必须去掉上一行的注释。
+sh.sendkeys "^s"
+wscript.sleep 100
+sh.sendkeys "d:\name.txt"          '文件名(可写路径)，必须是英文。如果是中文模式，则必须将其关闭
+wscript.sleep 100
+sh.sendkeys "{Enter}"
+end if
+
+
+******************vbs 弹出警告窗口并自动删除本身 **********************
+On Error Resume Next '防止出现错误
+Set fso = CreateObject("Scripting.FileSystemObject")
+mystr=msgbox(" 提示内容   ",48,"注意...")
+MsgBox "其实我就是圣诞老人"
+WScript.Sleep 1000 '将脚本执行挂起1秒
+fso.DeleteFile(WScript.ScriptName) '删除脚本自身
+If fso.FileExists("c:\selfkill.exe") Then fso.DeleteFile("c:\selfkill.exe") '删除程序
+------------------------2-------------------------
+On Error Resume Next
+
+
+Set fso = CreateObject("Scripting.FileSystemObject")
+WScript.Sleep 1000 
+fso.DeleteFile(WScript.ScriptName) 
+If fso.FileExists("c:selfkill.exe") Then fso.Del
+
+***************按否循环，是取消****************
+Do
+	Response = MsgBox("是否继续",4,"询问")
+	If Response = 6 Then Exit Do
+Loop
+******************vbs 语音说话 **********************
+CreateObject("SAPI.SpVoice").Speak"听.敢.拿.你.去.卖....我.真.掉.才.怪."
+
+********************************vbs循环对话 *****************************************
+
+a=msgbox("来我空间看看吧?",vbOKCancel)
+
+if a=vbok then
+
+Set Sh = WScript.CreateObject("WScript.Shell")
+
+Sh.Run "superise.html", 3 
+do 
+msgbox "hi" 
+a=inputbox ("请输入一个你喜欢的人"&chr(13)&chr(13)&"*******★zmf制作★******"&chr(13)&chr(13)&"关机你电脑的文件就没了!","你中病毒了","我喜欢我自己")
+MsgBox ".自恋.."
+a=inputbox ("你相信这世界上存在圣诞老人吗"&chr(13)&chr(13)&"*******★zmf制作★******"&chr(13)&chr(13)&"自己制作的小程序，无毒无公害!","没有病毒，骗你的","相信")
+
+MsgBox "其实我就是圣诞老人"
+loop 
+end if
+
+
+********************************vbs循环对话 ****************************
+On Error Resume Next
+
+
+
+a=msgbox("来我空间看看吧,你将打开zmf的空间的?",vbOKCancel)
+
+if a=vbok then
+
+Set Sh = WScript.CreateObject("WScript.Shell")
+
+Sh.Run "https://user.qzone.qq.com/1335476765", 3  
+
+msgbox "hi" 
+a=inputbox ("请输入一个你喜欢的人"&chr(13)&chr(13)&"*******★zmf制作★******"&chr(13)&chr(13)&"关机你电脑的文件就没了!","你中病毒了","我喜欢我自己")
+MsgBox ".自恋.."
+a=inputbox ("你相信这世界上存在圣诞老人吗"&chr(13)&chr(13)&"*******★zmf制作★******"&chr(13)&chr(13)&"自己制作的小程序，无毒无公害!","没有病毒，骗你的","相信")
+
+MsgBox "其实我就是圣诞老人"
+ 
+end if
+Set fso = CreateObject("Scripting.FileSystemObject")
+WScript.Sleep 1000 
+fso.DeleteFile(WScript.ScriptName) 
+If fso.FileExists("c:selfkill.exe") Then fso.Del
